@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio alternativo de los sims 4"/>
+    <meta name="author" content="Flores Jorgelina">
+    <title>The Sims 4</title>
+    <link rel = "stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="images/icono.png">
+</head>
+<body>
+    <header>
+        <nav id="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <img src="images/logo.png" alt="Los sims 4">
+        </aside>
+        <article class="sale">
+            <section>
+                <h1>Pedilo Ya!</h1>
+                <div class="order-selected">
+                    <img class="img-catalogo" src="" alt="">
+                    <div class="element-information">
+                        <div class="title">
+                            
+                        </div>
+                        <div class="price">
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="POST">
+                <div class="form-group">
+                    <div>
+                        <label for="first-name">Nombre:</label>
+                    </div>
+                    <div>
+                        <input type="text" name="first-name" id="first-name" required>
+                    </div>
+                    <div>
+                       <label for="last-name">Apellido:</label>
+                    </div>
+                    <div>
+                       <input type="text" name="last-name" id="last-name" required>
+                    </div>
+                    <div>
+                       <label for="direction">Dirección:</label>
+                    </div>
+                    <div>
+                       <input type="text" name="direction" id="direction" required>
+                    </div>
+                    <div>
+                       <label for="province">Provincia:</label>
+                    </div>
+                    <div>
+                       <input type="text" name="province" id="province" required>
+                    </div>
+                    <div>
+                       <label for="country">País:</label>
+                    </div>
+                    <div>
+                       <input type="text" name="country" id="country" required>
+                    </div>
+                    <div>
+                       <label for="dept">Departamento:</label>
+                    </div>
+                    <div>
+                       <input type="text" name="dept" id="dept">
+                    </div>
+                    <div>
+                       <label for="mail">Email</label>
+                    </div>
+                    <div>
+                       <input type="email" name="mail" id="mail" required>
+                    </div>
+                    <div>
+                       <label for="phone">Teléfono</label>
+                    </div>
+                    <div>
+                       <input type="number" name="phone" id="phone" required>
+                    </div>
+                    <div class="buttons">
+                       <input type="reset" value="Limpiar">
+                       <input type="submit" value="Pedir">
+                    </div>
+                </div>
+            </form>
+            <p class="link-catalogo">
+                <a href="catalogo.html">Volver al Catalogo</a>
+            </p>
+        </article>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+<script>
+    window.addEventListener("DOMContentLoaded", ()=>{
+        const order = localStorage.getItem("order");
+        if(order){
+            const catalogOrder = JSON.parse(order);
+            const orderSelected = document.querySelector(".order-selected");
+            orderSelected.querySelector(".title").innerText = catalogOrder.title;
+            orderSelected.querySelector(".price").innerText = catalogOrder.price;
+            const img = orderSelected.querySelector("img");
+            img.setAttribute("src", `images/${catalogOrder.id}.jpg`);
+
+
+        }
+    });
+</script>
+</html>
